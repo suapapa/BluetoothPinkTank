@@ -1,0 +1,4 @@
+#TID : retrive tank id string. return "TANK[01]\n"
+#RST : reset
+#M{L}{R} : set L&R motors touqe.
+#RPT : repet last touqe
