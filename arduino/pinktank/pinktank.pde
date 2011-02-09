@@ -1,3 +1,5 @@
+#include <MeetAndroid.h>
+
 #define PIN_RESET 7
 //#define PIN_ID 3
 #define PIN_DBG 13
@@ -15,6 +17,10 @@ int toqR = 0;
 
 #define serialWaitChars(n) while(Serial.available() < n){delay(10);}
 
+MeetAndroid meetAndroid;
+
+void testFunc(byte, byte);
+
 void setup(){
   pinMode(LEFT_PWM_A, OUTPUT);
   pinMode(LEFT_PIN_B, OUTPUT);
@@ -27,6 +33,13 @@ void setup(){
   //digitalWrite(PIN_ID, HIGH);
 
   Serial.begin(38400);
+
+  meetAndroid.registerFunction(testFunc, 'T');
+}
+
+void testFunc(byte flag, byte numOfValues)
+{
+    int foo = meetAndroid.getInt();
 }
 
 int getMultiple(char direction);
