@@ -1,8 +1,5 @@
 #!/bin/bash
-
 # Run this script with sudo
-#avrdude -v -patmega8 -cusbtiny -e -Ulock:w:0x3F:m -Uhfuse:w:0xca:m -Ulfuse:w:0xd4:m
-#avrdude -v -patmega8 -cusbtiny -U flash:w:ATmegaBOOT-8L.hex -U lock:w:0x0f:m
 
 # ATMEGA8L
 BINARY=ATmegaBOOT-8L.hex
@@ -12,9 +9,10 @@ LFUSE=0xD4
 # ATMEGA8
 #BINARY=ATmegaBOOT.hex
 #HFUSE=0xCA
-#LFUSE=0xDA
+#LFUSE=0xDF
 
 AVRDUDE_OPTS="-cstk500 -pm8 -P/dev/ttyUSB0 -b115200"
+#AVRDUDE_OPTS="-cstk200 -pm8 -P/dev/parport1"
 
 avrdude $AVRDUDE_OPTS -e -u -Ulock:w:0x3f:m -Uefuse:w:0x00:m -Uhfuse:w:$HFUSE:m -Ulfuse:w:$LFUSE:m
 avrdude $AVRDUDE_OPTS -Uflash:w:$BINARY -Ulock:w:0x0f:m
